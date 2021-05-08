@@ -185,8 +185,8 @@ class EventsController extends BaseController
         ->joinSub($workshopQuery, 'g_workshops', function($join) {
             $join->on('workshops.id', '=', 'g_workshops.id');
         })
-        ->where('workshops.start', '>', '2021-02-2 00:00:00')
-        ->with('workshops')->get();
+        ->where('workshops.start', '>', now())
+        ->with('workshops')->select('events.*')->get();
         throw new \Exception('implement in coding task 2');
     }
 }
